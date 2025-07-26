@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K-Pop Idol Manager</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ffd6e0, #ffe9ec);
+      color: #333;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    .container {
+      background-color: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #d63384;
+    }
+    .story {
+      margin: 20px 0;
+    }
+    .choices button {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      width: 100%;
+      background-color: #f8bbd0;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    .choices button:hover {
+      background-color: #f48fb1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>K-Pop Idol Manager</h1>
+    <div id="story" class="story">
+      Kamu adalah manajer baru dari grup idol kacau berisi Woo, Shua, dan Sannie.
+      Hari ini adalah hari pertama kamu...
+    </div>
+    <div class="choices" id="choices">
+      <button onclick="makeChoice(1)">Beri semangat mereka dengan kopi es americano</button>
+      <button onclick="makeChoice(2)">Langsung suruh mereka latihan koreo</button>
+      <button onclick="makeChoice(3)">Ajakin mereka bikin konten TikTok</button>
+    </div>
+  </div>
+
+  <script>
+    const story = document.getElementById('story');
+    const choices = document.getElementById('choices');
+
+    function makeChoice(choice) {
+      let text = '';
+      let nextChoices = '';
+
+      if (choice === 1) {
+        text = 'Mereka bahagia banget dapet kopi. Woo akhirnya senyum, Shua ngajak selfie, dan Sannie malah curhat 2 jam. Kamu mulai mikir ini bakal jadi hari panjang.';
+        nextChoices = `
+          <button onclick="makeChoice(4)">Ajak mereka evaluasi lagu baru</button>
+          <button onclick="makeChoice(5)">Tanya siapa yang paling pengen comeback solo</button>
+        `;
+      } else if (choice === 2) {
+        text = 'Woo ngambek, Shua cedera pas gerakan lompat, dan Sannie pura-pura pingsan. Kamu nyesel jadi perfeksionis terlalu cepat.';
+        nextChoices = `
+          <button onclick="makeChoice(4)">Ajak mereka istirahat sambil nonton variety show</button>
+          <button onclick="makeChoice(6)">Marahin mereka biar disiplin</button>
+        `;
+      } else if (choice === 3) {
+        text = 'Konten TikTok viral! Woo jadi trending, Shua nambah 20K followers, dan Sannie pamer gaya ngedance. Kamu dilirik CEO. Nice start!';
+        nextChoices = `
+          <button onclick="makeChoice(5)">Usul collab bareng idol girl group</button>
+          <button onclick="makeChoice(7)">Challenge dance bareng fans di live stream</button>
+        `;
+      } else if (choice === 4) {
+        text = 'Woo ternyata jago nulis lirik, Shua nemu nada unik, Sannie bikin beat random yang malah catchy. Lagu baru ini bisa jadi banger!';
+        nextChoices = '<button onclick="location.reload()">Main Lagi</button>';
+      } else if (choice === 5) {
+        text = 'Sannie langsung teriak "AKU!" dan mulai nyanyi... padahal belum diminta. Kamu sadar dia bakal jadi masalah dan juga potensi besar.';
+        nextChoices = '<button onclick="location.reload()">Main Lagi</button>';
+      } else if (choice === 6) {
+        text = 'Semua diem. Woo malah ngasih kamu tatapan tajam. Shua ngeluarin air mata. Sannie udah ilang entah ke mana. Kamu sadar, kamu bukan manajer drama Korea.';
+        nextChoices = '<button onclick="location.reload()">Main Lagi</button>';
+      } else if (choice === 7) {
+        text = 'Live streaming sukses! Tapi karena terlalu semangat, Woo nabrak ring lamp, Shua copot mic, dan Sannie... ya dia goyang terus. Chaos tapi viral!';
+        nextChoices = '<button onclick="location.reload()">Main Lagi</button>';
+      }
+
+      story.innerText = text;
+      choices.innerHTML = nextChoices;
+    }
+  </script>
+</body>
+</html>
